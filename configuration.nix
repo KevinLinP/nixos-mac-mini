@@ -9,6 +9,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./apple-silicon-support
+    ./ddclient.nix
+    ./home-assistant.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -65,13 +67,18 @@
       PermitRootLogin = "no";
     };
   };
+  services.fail2ban.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   networking.firewall = {
-    enable = false;
-    allowedTCPPorts = [ 22 ];
+    enable = true;
+    allowedTCPPorts = [ 
+      22 # SSH
+      8123 # Home Assistant
+      21063 # Home Assistant - HomeKit Bridge
+    ];
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
