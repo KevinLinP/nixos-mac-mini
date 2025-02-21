@@ -29,14 +29,10 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.kevin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      git
-      gh
-    ];
+    extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -75,12 +71,26 @@
   # accidentally delete configuration.nix.
   system.copySystemConfiguration = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # nix search wget
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
   ];
+
+  users.users.kevin.packages = with pkgs; [
+    git
+    gh
+  ];
+
+  # Add this section to enable the UniFi Controller service
+  services.unifi = {
+    enable = true;
+    unifiPackage = pkgs.unifi;
+    openFirewall = true;  # Opens required ports in firewall
+  };
 
   programs.nix-ld.enable = true;
 
