@@ -1,2 +1,3 @@
 apple-silicon-support/
 hardware-configuration.nix
+*.swp

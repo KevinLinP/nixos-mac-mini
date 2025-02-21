@@ -17,6 +17,14 @@
 
   networking.hostName = "mac-mini-nixos"; # Define your hostname.
 
+  networking = {
+    useDHCP = true;
+    
+    # shouldn't be necessary?
+    # Configure interfaces
+    # interfaces.end0.useDHCP = true;  # Replace enp1s0 with your interface name
+  };
+
   networking.wireless.iwd = {
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
