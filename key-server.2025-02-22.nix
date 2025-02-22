@@ -15,40 +15,35 @@
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
+      Type = "simple";
       User = "key-server";
       Group = "key-server";
-
-      Type = "simple";
       ExecStart = "/var/lib/key-server/keys";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = "10s";
-
-      # capabilities
-      CapabilityBoundingSet = []; 
-      AmbientCapabilities = [];
       
-      # system calls
-      KeyringMode = "private";
+      # Security hardening options
+      # CapabilityBoundingSet = "";
+      # InaccessiblePaths = [ "/root" ];  # Block access to sensitive directories
       LockPersonality = true;
       MemoryDenyWriteExecute = true; # probably does nothing on arm64
       NoNewPrivileges = true;
-      ProcSubset = "pid";               # Restrict /proc access to minimum
+      # ProcSubset = "pid";               # Restrict /proc access to minimum
       ProtectClock = true;
       ProtectControlGroups = true;
       ProtectHome = true;
-      ProtectHostname = true;
       ProtectKernelLogs = true;
       ProtectKernelModules = true;
       ProtectKernelTunables = true;
-      ProtectProc = "invisible";
-      ProtectSystem = "strict";
+      # ProtectProc = "invisible";
+      ProtectSystem = true;
       PrivateDevices = true;
       PrivateTmp = "disconnected";
+      # ReadOnlyPaths = [ "/home/kevin/key-server/target/release/keys" ];  # Make binary read-only
       RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
       RestrictNamespaces = true;
       RestrictRealtime = true;
       RestrictSUIDSGID = true;
-      SystemCallFilter = [ "@system-service" "@network-io" ];
 
       # further options at https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
       # and its subpages

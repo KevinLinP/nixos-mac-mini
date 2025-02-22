@@ -47,7 +47,7 @@
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.kevin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
+    extraGroups = [ "wheel" "key-server" ]; # Enable 'sudo' for the user.
   };
 
   security.sudo.wheelNeedsPassword = false;
