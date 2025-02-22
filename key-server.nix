@@ -10,7 +10,7 @@
   users.groups.key-server = {};
 
   # Keys server service configuration
-  systemd.services.keys-server = {
+  systemd.services.key-server = {
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
 
@@ -24,9 +24,11 @@
       
       # Security hardening options
       CapabilityBoundingSet = "";
+      InaccessiblePaths = [ "/home" "/root" ];  # Block access to sensitive directories
       LockPersonality = true;
       MemoryDenyWriteExecute = true; # probably does nothing on arm64
       NoNewPrivileges = true;
+      ProcSubset = "pid";               # Restrict /proc access to minimum
       ProtectClock = true;
       ProtectControlGroups = true;
       ProtectHome = true;
@@ -38,6 +40,7 @@
       PrivateDevices = true;
       PrivateNetwork = false;
       PrivateTmp = "disconnected";
+      ReadOnlyPaths = [ "/home/kevin/key-server/target/release/keys" ];  # Make binary read-only
       RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
       RestrictFileSystems = "";
       RestrictNamespaces = true;
