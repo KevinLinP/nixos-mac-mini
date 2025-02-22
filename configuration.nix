@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./apple-silicon-support
     ./ddclient.nix
+    ./lets-encrypt.nix
     ./home-assistant.nix
   ];
 

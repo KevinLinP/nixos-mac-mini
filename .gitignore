@@ -1,4 +1,5 @@
 apple-silicon-support/
 hardware-configuration.nix
 *.swp
-ddclient.conf
+
+*.secret.*
