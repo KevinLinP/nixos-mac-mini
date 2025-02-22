@@ -6,12 +6,15 @@
 
 {
   imports = [ 
-    # Include the results of the hardware scan.
+    # hardware
     ./hardware-configuration.nix
     ./apple-silicon-support
+    # key-server
     ./ddclient.nix
     ./lets-encrypt.nix
     ./caddy.nix
+    ./key-server.nix
+    # internal services
     ./home-assistant.nix
   ];
 

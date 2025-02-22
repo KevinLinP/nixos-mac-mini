@@ -23,26 +23,24 @@
       RestartSec = "10s";
       
       # Security hardening options
-      CapabilityBoundingSet = "";
-      InaccessiblePaths = [ "/home" "/root" ];  # Block access to sensitive directories
+      # CapabilityBoundingSet = "";
+      # InaccessiblePaths = [ "/root" ];  # Block access to sensitive directories
       LockPersonality = true;
       MemoryDenyWriteExecute = true; # probably does nothing on arm64
       NoNewPrivileges = true;
-      ProcSubset = "pid";               # Restrict /proc access to minimum
+      # ProcSubset = "pid";               # Restrict /proc access to minimum
       ProtectClock = true;
       ProtectControlGroups = true;
       ProtectHome = true;
       ProtectKernelLogs = true;
       ProtectKernelModules = true;
       ProtectKernelTunables = true;
-      ProtectProc = "invisible";
+      # ProtectProc = "invisible";
       ProtectSystem = true;
       PrivateDevices = true;
-      PrivateNetwork = false;
       PrivateTmp = "disconnected";
-      ReadOnlyPaths = [ "/home/kevin/key-server/target/release/keys" ];  # Make binary read-only
+      # ReadOnlyPaths = [ "/home/kevin/key-server/target/release/keys" ];  # Make binary read-only
       RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
-      RestrictFileSystems = "";
       RestrictNamespaces = true;
       RestrictRealtime = true;
       RestrictSUIDSGID = true;
