@@ -11,6 +11,7 @@
     ./apple-silicon-support
     ./ddclient.nix
     ./lets-encrypt.nix
+    ./caddy.nix
     ./home-assistant.nix
   ];
 
@@ -77,6 +78,7 @@
     enable = true;
     allowedTCPPorts = [ 
       22 # SSH
+      317 # keys server
       8123 # Home Assistant
       21063 # Home Assistant - HomeKit Bridge
       8443 # Unifi Controller
@@ -100,6 +102,11 @@
   users.users.kevin.packages = with pkgs; [
     git
     gh
+    # Rust
+    rustc
+    cargo
+    clang
+    pkg-config
   ];
 
   # Add this section to enable the UniFi Controller service
