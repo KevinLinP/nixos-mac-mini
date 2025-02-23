@@ -7,5 +7,10 @@
       # https://go-acme.github.io/lego/dns/dynu/
       environmentFile = "/home/kevin/nixos/lets-encrypt.secret.conf";
     };
+    certs."cookie-mirror.kevinlinp.org" = {
+      dnsProvider = "cloudflare";
+      # https://go-acme.github.io/lego/dns/cloudflare/index.html
+      environmentFile = "/home/kevin/nixos/lets-encrypt.secret.conf";
+    };
   };
 }

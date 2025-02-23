@@ -9,5 +9,11 @@
         reverse_proxy localhost:1317
       '';
     };
+    virtualHosts."cookie-mirror.kevinlinp.org:443" = {
+      useACMEHost = "cookie-mirror.kevinlinp.org";
+      extraConfig = ''
+        reverse_proxy localhost:1317
+      '';
+    };
   };
 } 
