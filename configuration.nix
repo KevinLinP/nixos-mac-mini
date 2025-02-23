@@ -9,11 +9,11 @@
     # hardware
     ./hardware-configuration.nix
     ./apple-silicon-support
-    # key-server
+    # cookie-mirror server
     ./ddclient.nix
     ./lets-encrypt.nix
     ./caddy.nix
-    ./key-server.nix
+    ./cookie-mirror.nix
     # internal services
     ./home-assistant.nix
   ];
