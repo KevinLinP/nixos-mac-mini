@@ -47,7 +47,7 @@
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.kevin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "key-server" ]; # Enable 'sudo' for the user.
+    extraGroups = [ "wheel" "cookie-mirror" ]; # Enable 'sudo' for the user.
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -81,10 +81,11 @@
     enable = true;
     allowedTCPPorts = [ 
       22 # SSH
-      317 # keys server
       8123 # Home Assistant
       21063 # Home Assistant - HomeKit Bridge
       8443 # Unifi Controller
+      317 # Dynu cookie-mirror
+      # 443 # Cloudflare cookie-mirror
     ];
   };
 
