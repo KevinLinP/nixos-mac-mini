@@ -9,13 +9,13 @@
     # hardware
     ./hardware-configuration.nix
     ./apple-silicon-support
-    # external services
+    # external networking
     ./ddclient.nix
     ./cloudflared.nix
-    ./lets-encrypt.nix
-    ./caddy.nix
-    ./cookie-mirror.nix
+    # cookie-mirror server
+    ./cookie-mirror
     # home services
+    ./unifi-controller.nix
     ./home-assistant.nix
   ];
 
@@ -115,14 +115,6 @@
     # cloudflare
     cloudflared
   ];
-
-  # Add this section to enable the UniFi Controller service
-  services.unifi = {
-    enable = true;
-    unifiPackage = pkgs.unifi;
-    mongodbPackage = pkgs.mongodb-ce;
-    openFirewall = true;  # Opens required ports in firewall
-  };
 
   programs.nix-ld.enable = true;
 
