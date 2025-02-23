@@ -9,12 +9,13 @@
     # hardware
     ./hardware-configuration.nix
     ./apple-silicon-support
-    # cookie-mirror server
+    # external services
     ./ddclient.nix
+    ./cloudflared.nix
     ./lets-encrypt.nix
     ./caddy.nix
     ./cookie-mirror.nix
-    # internal services
+    # home services
     ./home-assistant.nix
   ];
 
@@ -47,7 +48,7 @@
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.kevin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "cookie-mirror" ]; # Enable 'sudo' for the user.
+    extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -84,8 +85,7 @@
       8123 # Home Assistant
       21063 # Home Assistant - HomeKit Bridge
       8443 # Unifi Controller
-      317 # Dynu cookie-mirror
-      # 443 # Cloudflare cookie-mirror
+      31717 # Cookie Mirror
     ];
   };
 
@@ -106,11 +106,14 @@
   users.users.kevin.packages = with pkgs; [
     git
     gh
+    ncdu
     # Rust
     rustc
     cargo
     clang
     pkg-config
+    # cloudflare
+    cloudflared
   ];
 
   # Add this section to enable the UniFi Controller service
