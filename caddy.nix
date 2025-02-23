@@ -12,18 +12,19 @@
     #   '';
     # };
 
-    virtualHosts."cmd.kevinlinp.org:31717" = {
-      useACMEHost = "cmd.kevinlinp.org";
+    virtualHosts."cm.klptos.org:31717" = {
+      useACMEHost = "cm.klptos.org";
       extraConfig = ''
         reverse_proxy localhost:1317
       '';
     };
 
-    virtualHosts."localhost:31713" = {
-      useACMEHost = "cm.kevinlinp.org";
-      extraConfig = ''
-        reverse_proxy localhost:1317
-      '';
-    };
+    # virtualHosts."localhost:31713" = {
+    #   listenAddresses = [ "127.0.0.1" ];
+    #   useACMEHost = "cm.kevinlinp.org";
+    #   extraConfig = ''
+    #     reverse_proxy localhost:1317
+    #   '';
+    # };
   };
 } 

@@ -85,7 +85,7 @@
       8123 # Home Assistant
       21063 # Home Assistant - HomeKit Bridge
       8443 # Unifi Controller
-      31717 # Cookie Mirror
+      31717 # cookie-mirror
     ];
   };
 
