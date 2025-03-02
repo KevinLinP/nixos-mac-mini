@@ -8,15 +8,16 @@
   imports = [ 
     # hardware
     ./hardware-configuration.nix
-    ./apple-silicon-support
+    <apple-silicon-support/apple-silicon-support>
+    # ./apple-silicon-support
     # external networking
     ./ddclient.nix
-    ./cloudflared.nix
-    # cookie-mirror server
-    ./cookie-mirror
+    # ./cloudflared.nix
     # home services
     ./unifi-controller.nix
     ./home-assistant.nix
+    # cookie-mirror server
+    ./cookie-mirror
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -112,8 +113,6 @@
     cargo
     clang
     pkg-config
-    # cloudflare
-    cloudflared
   ];
 
   programs.nix-ld.enable = true;
