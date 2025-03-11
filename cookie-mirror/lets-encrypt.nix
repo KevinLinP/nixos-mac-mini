@@ -12,7 +12,7 @@
     certs."cm.klptos.org" = {
       dnsProvider = "cloudflare";
       # https://go-acme.github.io/lego/dns/cloudflare/index.html
-      environmentFile = "/home/kevin/nixos/lets-encrypt.secret.conf";
+      environmentFile = "/home/kevin/nixos/cookie-mirror/lets-encrypt.secret.conf";
     };
   };
 }

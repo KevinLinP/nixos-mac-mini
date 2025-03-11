@@ -9,15 +9,17 @@
     # hardware
     ./hardware-configuration.nix
     <apple-silicon-support/apple-silicon-support>
-    # ./apple-silicon-support
-    # external networking
-    ./ddclient.nix
-    # ./cloudflared.nix
+
     # home services
     ./unifi-controller.nix
     ./home-assistant.nix
+
+    # external networking
+    ./ddclient.nix
+    ./cloudflared.nix
+
     # cookie-mirror server
-    ./cookie-mirror
+    # ./cookie-mirror
   ];
 
   # Use the systemd-boot EFI boot loader.
